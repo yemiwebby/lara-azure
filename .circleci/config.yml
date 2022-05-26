@@ -49,11 +49,11 @@ jobs:
       - azure-cli/login-with-user:
           alternate-tenant: false
       - run:
-          command: az webapp deployment source show --resource-group laravel-api_group --name laravel-api
+          command: az webapp deployment source show --resource-group demoApp --name laravel-api
       - run:
           name: "Deploy Web App to Azure"
           command: |
-            az webapp deployment source config-local-git --resource-group laravel-api_group --name laravel-api
+            az webapp deployment source config-local-git --resource-group demoApp --name laravel-api
 
 workflows:
   build-and-deploy:
