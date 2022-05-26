@@ -46,7 +46,8 @@ jobs:
     executor: azure-cli/default
     steps:
       - azure-cli/install
-      - azure-cli/login-with-service-principal
+      - azure-cli/login-with-user:
+          alternate-tenant: false
       - run:
           command: az webapp deployment source show --resource-group laravel-api_group --name laravel-api
       - run:
@@ -55,9 +56,9 @@ jobs:
             az webapp deployment source config-local-git --resource-group laravel-api_group --name laravel-api
 
 workflows:
-    build-and-deploy:
-      jobs:
-        - build
-        - login-to-azure-and-deploy:
-            requires:
-              - build
+  build-and-deploy:
+    jobs:
+      - build
+      - login-to-azure-and-deploy:
+          requires:
+            - build
