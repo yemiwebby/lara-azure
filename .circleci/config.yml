@@ -37,8 +37,6 @@ jobs:
           command: |
             mv .env.example .env
             php artisan key:generate
-            ls
-
       - run:
           name: "Run tests"
           command: php vendor/bin/phpunit
@@ -61,8 +59,7 @@ jobs:
           name: "Deploy Web App to Azure"
           command: |
             az webapp deployment source config-local-git --resource-group demoApp --name laravel-api
-            cd ~/project/
-            ls
+            rm -rf .git
             git init
             git config --global user.email "me@mail.com"
             git config --global user.name "yemiwebby"
