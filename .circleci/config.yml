@@ -43,8 +43,6 @@ jobs:
           command: php vendor/bin/phpunit
       - persist_to_workspace:
           root: ~/project
-          paths:
-            - /
 
   login-to-azure-and-deploy:
     executor: azure-cli/default
