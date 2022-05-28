@@ -37,12 +37,15 @@ jobs:
           command: |
             mv .env.example .env
             php artisan key:generate
+            ls
 
       - run:
           name: "Run tests"
           command: php vendor/bin/phpunit
       - persist_to_workspace:
           root: ~/project
+          paths:
+            - /app
 
   login-to-azure-and-deploy:
     executor: azure-cli/default
