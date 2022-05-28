@@ -44,7 +44,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - laravel
+            - /
 
   login-to-azure-and-deploy:
     executor: azure-cli/default
@@ -60,7 +60,7 @@ jobs:
           name: "Deploy Web App to Azure"
           command: |
             az webapp deployment source config-local-git --resource-group demoApp --name laravel-api
-            cd ~/project/laravel/
+            cd ~/project/
             ls
             git init
             git config --global user.email "me@mail.com"
