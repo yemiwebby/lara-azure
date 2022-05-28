@@ -45,7 +45,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - app
+            - .
 
   login-to-azure-and-deploy:
     executor: azure-cli/default
